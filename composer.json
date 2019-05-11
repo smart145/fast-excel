@@ -1,5 +1,5 @@
 {
-  "name": "rap2hpoutre/fast-excel",
+  "name": "dramosv90/fast-excel",
   "type": "library",
   "keywords": [
     "laravel",
@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Rap2hpoutre\\FastExcel\\": "src/"
+      "Dramosv90\\FastExcel\\": "src/"
     },
     "files": [
       "src/functions/fastexcel.php"
@@ -28,13 +28,13 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Rap2hpoutre\\FastExcel\\Tests\\": "tests/"
+      "Dramosv90\\FastExcel\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Rap2hpoutre\\FastExcel\\Providers\\FastExcelServiceProvider"
+        "Dramosv90\\FastExcel\\Providers\\FastExcelServiceProvider"
       ]
     }
   },
@@ -43,6 +43,10 @@
     {
       "name": "rap2h",
       "email": "raphaelht@gmail.com"
+    },
+    {
+      "name": "Dariel Ramos",
+      "email": "vdariel90@gmail.com"
     }
   ],
   "minimum-stability": "stable"
