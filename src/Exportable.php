@@ -20,6 +20,11 @@ trait Exportable
     private $header_style;
 
     /**
+     * @var array
+     */
+    private $columns_width;
+
+    /**
      * @param string $path
      *
      * @return string
@@ -34,13 +39,14 @@ trait Exportable
     abstract protected function setOptions(&$reader_or_writer);
 
     /**
-     * @param string        $path
+     * @param string $path
      * @param callable|null $callback
      *
      * @throws \Box\Spout\Common\Exception\IOException
      * @throws \Box\Spout\Common\Exception\InvalidArgumentException
      * @throws \Box\Spout\Common\Exception\UnsupportedTypeException
      * @throws \Box\Spout\Writer\Exception\WriterNotOpenedException
+     * @throws \Box\Spout\Common\Exception\SpoutException
      *
      * @return string
      */
@@ -51,6 +57,13 @@ trait Exportable
         return realpath($path) ?: $path;
     }
 
+    public function setColumnsWidth(array $columns_width)
+    {
+        $this->columns_width = $columns_width;
+
+        return $this;
+    }
+
     /**
      * @param $path
      * @param callable|null $callback
@@ -59,6 +72,7 @@ trait Exportable
      * @throws \Box\Spout\Common\Exception\InvalidArgumentException
      * @throws \Box\Spout\Common\Exception\UnsupportedTypeException
      * @throws \Box\Spout\Writer\Exception\WriterNotOpenedException
+     * @throws \Box\Spout\Common\Exception\SpoutException
      *
      * @return \Symfony\Component\HttpFoundation\StreamedResponse|string
      */
@@ -76,7 +90,7 @@ trait Exportable
 
     /**
      * @param $path
-     * @param string        $function
+     * @param string $function
      * @param callable|null $callback
      *
      * @throws \Box\Spout\Common\Exception\IOException
@@ -89,6 +103,7 @@ trait Exportable
     {
         $writer = WriterFactory::create($this->getType($path));
         $this->setOptions($writer);
+
         /* @var \Box\Spout\Writer\WriterInterface $writer */
         $writer->$function($path);
 
@@ -96,6 +111,7 @@ trait Exportable
 
         // It can export one sheet (Collection) or N sheets (SheetCollection)
         $data = $this->data instanceof SheetCollection ? $this->data : collect([$this->data]);
+        $applyColumnsWith = false;
 
         foreach ($data as $key => $collection) {
             if ($collection instanceof Collection) {
@@ -111,6 +127,15 @@ trait Exportable
                 if ($this->with_header) {
                     $first_row = $collection->first();
                     $keys = array_keys(is_array($first_row) ? $first_row : $first_row->toArray());
+                    if (!$applyColumnsWith) {
+                        $columnsWithCount = \count($this->columns_width);
+                        if ($columnsWithCount > 0 && $columnsWithCount < \count($keys)) {
+                            throw new \Exception('The columns width elements count must match with header count.');
+                        }
+                        for ($i = 1; $i < \count($keys); $i++) {
+                            $writer->setColumnsWidth($this->columns_width[$i-1], $i, $i);
+                        }
+                    }
                     if ($this->header_style) {
                         $writer->addRowWithStyle($keys, $this->header_style);
                     } else {
