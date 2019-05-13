@@ -1,11 +1,11 @@
 <?php
 
-namespace Rap2hpoutre\FastExcel\Tests;
+namespace Dramosv90\FastExcel\Tests;
 
 use Box\Spout\Writer\Style\Color;
 use Box\Spout\Writer\Style\StyleBuilder;
-use Rap2hpoutre\FastExcel\FastExcel;
-use Rap2hpoutre\FastExcel\SheetCollection;
+use Dramosv90\FastExcel\FastExcel;
+use Dramosv90\FastExcel\SheetCollection;
 
 /**
  * Class FastExcelTest.

@@ -1,12 +1,12 @@
 <?php
 
-namespace Rap2hpoutre\FastExcel\Tests;
+namespace Dramosv90\FastExcel\Tests;
 
 use Box\Spout\Common\Type;
 use Box\Spout\Reader\ReaderFactory;
 use Illuminate\Support\Collection;
-use Rap2hpoutre\FastExcel\FastExcel;
-use Rap2hpoutre\FastExcel\SheetCollection;
+use Dramosv90\FastExcel\FastExcel;
+use Dramosv90\FastExcel\SheetCollection;
 
 /**
  * Class IssuesTest.
@@ -140,7 +140,7 @@ class IssuesTest extends TestCase
         $this->assertInstanceOf(Collection::class, $collection);
     }
 
-    public function testIssue93() 
+    public function testIssue93()
     {
         (new FastExcel($this->collection()))->export(__DIR__.'/猫.xlsx');
         $this->assertTrue(file_exists(__DIR__.'/猫.xlsx'));
