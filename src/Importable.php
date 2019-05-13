@@ -1,6 +1,6 @@
 <?php
 
-namespace Dramosv90\FastExcel;
+namespace Rap2hpoutre\FastExcel;
 
 use Box\Spout\Reader\ReaderFactory;
 use Box\Spout\Reader\SheetInterface;

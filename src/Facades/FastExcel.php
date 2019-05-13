@@ -1,6 +1,6 @@
 <?php
 
-namespace Dramosv90\FastExcel\Facades;
+namespace Rap2hpoutre\FastExcel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
