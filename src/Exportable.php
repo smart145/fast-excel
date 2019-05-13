@@ -126,7 +126,7 @@ trait Exportable
                 // Add header row.
                 if ($this->with_header) {
                     $first_row = $collection->first();
-                    $keys = array_keys(is_array($first_row) ? $first_row : $first_row->toArray());
+                    $keys = $this->hasColumnsHeader() ? array_keys($this->columns_width) : array_keys(is_array($first_row) ? $first_row : $first_row->toArray());
                     if ($this->header_style) {
                         $writer->addRowWithStyle($keys, $this->header_style);
                     } else {
@@ -143,6 +143,11 @@ trait Exportable
             }
         }
         $writer->close();
+    }
+
+    private function hasColumnsHeader()
+    {
+        return $this->columns_width && \count($this->columns_width) && is_string(array_keys($this->columns_width)[0]);
     }
 
     private function customizeColumnsWidth(Writer $writer)
@@ -210,3 +215,4 @@ trait Exportable
         return $this;
     }
 }
+
