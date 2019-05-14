@@ -1,6 +1,6 @@
 <?php
 
-namespace Dramosv90\FastExcel;
+namespace Smart145\FastExcel;
 
 use Box\Spout\Writer\Style\Style;
 use Box\Spout\Writer\WriterFactory;
