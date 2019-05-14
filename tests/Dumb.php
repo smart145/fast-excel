@@ -1,6 +1,6 @@
 <?php
 
-namespace Dramosv90\FastExcel\Tests;
+namespace Smart145\FastExcel\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 
