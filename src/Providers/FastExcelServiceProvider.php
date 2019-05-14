@@ -1,6 +1,6 @@
 <?php
 
-namespace Dramosv90\FastExcel\Providers;
+namespace Smart145\FastExcel\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
