@@ -4,7 +4,7 @@ if (!function_exists('fastexcel')) {
     /**
      * Return app instance of FastExcel.
      *
-     * @return Dramosv90\FastExcel\FastExcel
+     * @return Smart145\FastExcel\FastExcel
      */
     function fastexcel($data = null)
     {
