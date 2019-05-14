@@ -1,11 +1,11 @@
 <?php
 
-namespace Dramosv90\FastExcel\Tests;
+namespace Smart145\FastExcel\Tests;
 
 use Box\Spout\Writer\Style\Color;
 use Box\Spout\Writer\Style\StyleBuilder;
-use Dramosv90\FastExcel\FastExcel;
-use Dramosv90\FastExcel\SheetCollection;
+use Smart145\FastExcel\FastExcel;
+use Smart145\FastExcel\SheetCollection;
 
 /**
  * Class FastExcelTest.
