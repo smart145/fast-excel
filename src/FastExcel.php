@@ -1,6 +1,6 @@
 <?php
 
-namespace Dramosv90\FastExcel;
+namespace Smart145\FastExcel;
 
 use Box\Spout\Common\Type;
 use Box\Spout\Reader\CSV\Reader as CSVReader;
