@@ -153,7 +153,9 @@ trait Exportable
     private function customizeColumnsWidth(Writer $writer)
     {
         $data = $this->data->first();
-        $keys = get_object_vars($data);
+        $keys = Arr::where(get_object_vars($data), function ($item, $key) {
+            return !Str::startsWith($key, '_');
+        });
         $columnsWithCount = count($this->columns_width);
         if ($columnsWithCount === 0) {
             return;
